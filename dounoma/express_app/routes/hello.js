@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function(req, res) {
-  const data = {
-    title: "Hello",
-    message: "これはsampleで追加されたページです"
-  };
+const db = [
+  {name:"taro",mail:"taro@yamada"},
+  {name:"hanako",mail:"hanako@flower"},
+  {name:"sachiko",mail:"sachiko@happy"}
+]
+  router.get('/',function (req,res,nect){
+    const data = {
+      title:"hello",
+      message:"データを表示します",
+      db:db
+    }
   res.render('hello',  {data} );
 });
 
