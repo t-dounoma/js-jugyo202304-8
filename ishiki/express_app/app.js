@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -8,7 +9,17 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const helloRouter = require('./routes/hello');
 
+const session = require('express-session');
+
 var app = express();
+
+const ses_opt = {
+  secret: 'key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60 * 60 * 24 },
+};
+app.use(session(ses_opt));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
