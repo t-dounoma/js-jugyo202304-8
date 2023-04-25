@@ -1,6 +1,21 @@
 <%- include('header', title) %>
 
 <p class="my-2" id="msg"><%= message %></p>
+<form action="/db" method="post">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" name="name" id="name" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" name="email" id="email" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" name="age" id="age" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">送信</button>
+</form>
 <table class="table">
   <thead>
     <tr>
