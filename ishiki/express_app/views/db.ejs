@@ -24,6 +24,8 @@
       <th>email</th>
       <th>age</th>
       <th>update</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -34,6 +36,7 @@
       <td><%= item.email %></td>
       <td><%= item.age %></td>
       <td><%= item.updatedAt %></td>
+      <th><a href="/db/edit/<%= item.id %>">編集</a></th>
     </tr>
     <% } %>
   </tbody>
