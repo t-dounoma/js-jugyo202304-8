@@ -40,4 +40,10 @@ router.post('/edit', async function (req, res, next) {
   res.redirect('/db');
 });
 
+router.post('/delete/:id', async function (req, res, next) {
+  const { id } = req.params;
+  await prisma.user.delete({ where: { id: parseInt(id) } });
+  res.redirect('/db');
+});
+
 module.exports = router;
