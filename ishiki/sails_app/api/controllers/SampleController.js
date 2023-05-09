@@ -6,14 +6,13 @@
  */
 
 module.exports = {
-  
-
   /**
    * `SampleController.index()`
    */
   index: async function (req, res) {
-    return res.json({
-      todo: 'index() is not implemented yet!'
+    return res.view({
+      title: "Sample!",
+      message: "これはサンプルで作成したコントローラーです。",
     });
   },
 
@@ -22,7 +21,7 @@ module.exports = {
    */
   add: async function (req, res) {
     return res.json({
-      todo: 'add() is not implemented yet!'
+      todo: "add() is not implemented yet!",
     });
   },
 
@@ -31,7 +30,7 @@ module.exports = {
    */
   edit: async function (req, res) {
     return res.json({
-      todo: 'edit() is not implemented yet!'
+      todo: "edit() is not implemented yet!",
     });
   },
 
@@ -40,9 +39,7 @@ module.exports = {
    */
   delete: async function (req, res) {
     return res.json({
-      todo: 'delete() is not implemented yet!'
+      todo: "delete() is not implemented yet!",
     });
-  }
-
+  },
 };
-

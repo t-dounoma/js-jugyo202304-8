@@ -20,6 +20,7 @@ module.exports.routes = {
 
   "/": { view: "pages/homepage" },
   "/hello": { action: "view-hello" },
+  "/sample": { controller: "SampleController", action: "index" },
 
   /***************************************************************************
    *                                                                          *
