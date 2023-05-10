@@ -11,12 +11,19 @@ module.exports = {
    */
   index: async function (req, res) {
     message = "名前を入力";
-    if (req.method == "POST") {
-      message = "こんにちは、" + req.body.msg + "さん！";
-    }
+    msg = "";
     return res.view({
       title: "Sample!",
       message: message,
+    });
+  },
+  index_posted: async function (req, res) {
+    msg = req.body.msg;
+    message = "こんにちは、" + msg + "さん！";
+    return res.view({
+      title: "Sample!",
+      message: message,
+      msg: msg,
     });
   },
 
