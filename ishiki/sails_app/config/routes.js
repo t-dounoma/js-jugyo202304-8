@@ -22,6 +22,7 @@ module.exports.routes = {
   "/hello": { action: "view-hello" },
   "GET /sample/:id?": { controller: "SampleController", action: "index" },
   "POST /sample": { controller: "SampleController", action: "index_posted" },
+  "GET /board": { controller: "BoardController", action: "index" },
 
   /***************************************************************************
    *                                                                          *
