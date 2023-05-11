@@ -20,7 +20,7 @@ module.exports.routes = {
 
   "/": { view: "pages/homepage" },
   "/hello": { action: "view-hello" },
-  "GET /sample": { controller: "SampleController", action: "index" },
+  "GET /sample/:id?": { controller: "SampleController", action: "index" },
   "POST /sample": { controller: "SampleController", action: "index_posted" },
 
   /***************************************************************************
