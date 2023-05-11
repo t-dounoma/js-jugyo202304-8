@@ -1,0 +1,13 @@
+<div id="hello" v-cloak>
+  <h1><%= title %></h1>
+  <p><%= message %></p>
+  <form method="post" action="/sample">
+    <div>
+      <label for="msg">ID</label>
+      <input type="text" id="msg" name="msg" value="<%= msg %>">
+    </div>
+    <button type="submit">送信</button>
+  </form>
+</div>
+
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
