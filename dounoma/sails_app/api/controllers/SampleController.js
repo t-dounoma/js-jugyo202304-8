@@ -12,31 +12,20 @@ module.exports = {
    * `SampleController.index()`
    */
   index: async function (req, res) {
-    if (req.param('id')){
-      message = "あなたのIDは、" + req.param('id') + "です。"
-    }else{
-      message = "名前を入力"
-    }
-    if (req.query.name){
-      message += "(あなたの名前は、" + req.query.name + "ですね？）"
-    }
-    if (req.method == "POST"){
-      message = "こんにちは" + req.body.msg + "さん"
+    if (!req.session.data){
+      req.session.data = []
     }
     return res.view({
       title:"Sample!",
-      message:message
+      message:"メッセージを送信してください。",
+      data:req.session.data
     })
   },
 
   index_posted: async function (req, res) {
-    const msg = req.body.msg
-    const message = "こんにちは" + req.body.msg + "さん"
-    return res.view({
-      title: "sample",
-      message: message,
-      msg: msg
-    });
+    msg = req.body.msg
+    req.session.data.unshift(msg)
+    return res.redirect("/sample")
   },
 
 

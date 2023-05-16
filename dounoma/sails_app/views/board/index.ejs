@@ -1,0 +1,25 @@
+<h1><%= title %></h1>
+<p><%= msg %></p>
+<form method="post" action="/board">
+    <div>
+        <label for="message">Message</label>
+        <input type="text" id="message" name="message">
+    </div>
+    <div>
+        <label for="user">User</label>
+        <input type="text" id="user" name="user">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+    </div>
+    <button type="submit">送信</button>
+</form>
+<ul>
+  <% for(var item of data ){ %>
+    <li>
+      <%= item.message %>(<%= item.user %>)
+    </li>
+  <% } %>
+</ul>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

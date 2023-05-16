@@ -1,16 +1,16 @@
 /**
  * View Engine Configuration
- * (sails.config.views)
+ * (sails.config.board)
  *
- * Server-sent views are a secure and effective way to get your app up
+ * Server-sent board are a secure and effective way to get your app up
  * and running. Views are normally served from actions.  Below, you can
  * configure your templating language/framework of choice and configure
  * Sails' layout support.
  *
- * For details on available options for configuring server-side views, check out:
+ * For details on available options for configuring server-side board, check out:
  * https://sailsjs.com/config/views
  *
- * For more background information on views and partials in Sails, check out:
+ * For more background information on board and partials in Sails, check out:
  * https://sailsjs.com/docs/concepts/views
  */
 
@@ -18,10 +18,10 @@ module.exports.views = {
 
   /***************************************************************************
   *                                                                          *
-  * Extension to use for your views. When calling `res.view()` in an action, *
+  * Extension to use for your board. When calling `res.view()` in an action, *
   * you can leave this extension off. For example, calling                   *
   * `res.view('homepage')` will (using default settings) look for a          *
-  * `views/homepage.ejs` file.                                               *
+  * `board/homepage.ejs` file.                                               *
   *                                                                          *
   ***************************************************************************/
 
@@ -29,7 +29,7 @@ module.exports.views = {
 
   /***************************************************************************
   *                                                                          *
-  * The path (relative to the views directory, and without extension) to     *
+  * The path (relative to the board directory, and without extension) to     *
   * the default layout file to use, or `false` to disable layouts entirely.  *
   *                                                                          *
   * Note that layouts only work with the built-in EJS view engine!           *

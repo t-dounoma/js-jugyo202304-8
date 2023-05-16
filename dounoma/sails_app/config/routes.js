@@ -12,17 +12,27 @@ module.exports.routes = {
 
   /***************************************************************************
   *                                                                          *
-  * Make the view located at `views/homepage.ejs` your home page.            *
+  * Make the view located at `board/homepage.ejs` your home page.            *
   *                                                                          *
   * (Alternatively, remove this and add an `index.html` file in your         *
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-  '/hello': { action: "view-hello" },
-  'GET /sample/:id?': { controller:"sampleController",action: "index" },
-  'POST /sample': { controller:"sampleController",action: "index_posted" },
+    // ...
+
+  'GET /board': { controller: "BoardController", action: "index" },
+  'POST /board': { controller: "BoardController", action: "index_posted" },
+  'GET /board/edit/:id': { controller: "BoardController", action: "edit" },
+  'POST /board/edit/:id': { controller: "BoardController", action: "edit_posted" },
+  'GET /board/delete/:id': { controller: "BoardController", action: "delete" },
+  'POST /board/delete/:id': { controller: "BoardController", action: "delete_posted" },
+
+    // ...
+
+
+
+
 
 
 

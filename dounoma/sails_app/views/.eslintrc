@@ -5,7 +5,7 @@
   //  ┌─  ┌─┐┌─┐┬─┐  ┬┌┐┌┬  ┬┌┐┌┌─┐  ┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┌┬┐┌─┐┌─┐┌─┐  ─┐
   //  │   ├┤ │ │├┬┘  │││││  ││││├┤   └─┐│  ├┬┘│├─┘ │    │ ├─┤│ ┬└─┐   │
   //  └─  └  └─┘┴└─  ┴┘└┘┴─┘┴┘└┘└─┘  └─┘└─┘┴└─┴┴   ┴    ┴ ┴ ┴└─┘└─┘  ─┘
-  // > An .eslintrc configuration override for use in the `views/` directory.
+  // > An .eslintrc configuration override for use in the `board/` directory.
   //
   // (This works just like assets/.eslintrc, with one minor addition)
   //
