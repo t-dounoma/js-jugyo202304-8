@@ -18,7 +18,7 @@ module.exports = {
     var data = await Board.findOne({ id: id });
     return res.view({
       title: "sample",
-      msg: "boardモデルを更新します",
+      msg: "Boardモデルを更新します",
       data: data,
     });
   },
@@ -26,6 +26,21 @@ module.exports = {
   edit_posted: async function (req, res) {
     const id = parseInt(req.param("id"));
     await Board.updateOne({ id: id }).set(req.body);
+    return res.redirect("/board");
+  },
+
+  delete: async function (req, res) {
+    const id = parseInt(req.param("id"));
+    var data = await Board.findOne({ id: id });
+    return res.view({
+      title: "sample",
+      msg: "boardモデルを削除します",
+      data: data,
+    });
+  },
+  delete_posted: async function (req, res) {
+    const id = parseInt(req.param("id"));
+    await Board.destroyOne({ id: id });
     return res.redirect("/board");
   },
 };
