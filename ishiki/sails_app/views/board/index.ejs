@@ -1,5 +1,20 @@
 <h1 class="display-4"><%= title %></h1>
 <p><%= msg %></p>
+<form action="/board" method="post">
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <input type="text" name="message" id="message" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="user" class="form-label">User</label>
+    <input type="text" name="user" id="user" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" name="email" id="email" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-secondary">送信</button>
+</form>
 <ul class="mt-4 list-group">
   <% for( var item of data ) { %>
   <li class="list-group-item"><%= item.message %> (<%= item.user %>)</li>
