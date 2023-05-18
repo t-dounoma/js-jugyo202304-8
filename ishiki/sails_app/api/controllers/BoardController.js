@@ -43,4 +43,25 @@ module.exports = {
     await Board.destroyOne({ id: id });
     return res.redirect("/board");
   },
+
+  find: async function (req, res) {
+    var data = await Board.find();
+    return res.view({
+      title: "Sample!",
+      msg: "Boardモデルを削除します",
+      find: "",
+      data: data,
+    });
+  },
+  find_posted: async function (req, res) {
+    var data = await Board.find({
+      user: req.body.find,
+    });
+    return res.view("board/find", {
+      title: "Sample!",
+      msg: "Boardモデルの検索「" + req.body.find + "」",
+      find: req.body.find,
+      data: data,
+    });
+  },
 };

@@ -34,6 +34,11 @@ module.exports.routes = {
     controller: "BoardController",
     action: "delete_posted",
   },
+  "GET /board/find": { controller: "BoardController", action: "find" },
+  "POST /board/find": {
+    controller: "BoardController",
+    action: "find_posted",
+  },
 
   /***************************************************************************
    *                                                                          *
