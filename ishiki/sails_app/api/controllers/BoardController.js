@@ -54,8 +54,12 @@ module.exports = {
     });
   },
   find_posted: async function (req, res) {
+    const arr = req.body.find.split(",");
     var data = await Board.find({
-      user: req.body.find,
+      id: {
+        ">=": parseInt(arr[0]),
+        "<=": parseInt(arr[1]),
+      },
     });
     return res.view("board/find", {
       title: "Sample!",
