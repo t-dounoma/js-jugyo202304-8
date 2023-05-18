@@ -45,21 +45,23 @@ module.exports = {
   },
 
   find: async function (req, res) {
-    var data = await Board.find();
+    var data = await Board.find({
+      sort: ["user ASC", "createdAt DESC"],
+    });
     return res.view({
-      title: "Sample!",
-      msg: "Boardモデルを削除します",
+      title: "Sample",
+      msg: "Boardモデルを検索します。",
       find: "",
       data: data,
     });
   },
+
   find_posted: async function (req, res) {
-    const arr = req.body.find.split(",");
     var data = await Board.find({
-      id: {
-        ">=": parseInt(arr[0]),
-        "<=": parseInt(arr[1]),
+      where: {
+        message: { contains: req.body.find },
       },
+      sort: "user ASC",
     });
     return res.view("board/find", {
       title: "Sample!",
