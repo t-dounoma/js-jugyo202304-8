@@ -1,0 +1,17 @@
+<h1><%= title %></h1>
+<p><%= msg %></p>
+<form method="post" action="/board/find">
+  <div>
+    <label for="find">Find:</label>
+    <input type="text" id="find" name="find" value="<%= find %>">
+  </div>
+  <button type="submit">検索</button>
+</form>
+<ul>
+  <% for(var item of data ){ %>
+    <li>
+      <%= item.message %>(<%= item.user %>)[<%= item.id %>]<<%= item.createdAt %>
+    </li>
+  <% } %>
+</ul>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

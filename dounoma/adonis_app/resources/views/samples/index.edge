@@ -1,0 +1,22 @@
+@layout("layouts/main")
+@set("title",title)
+@section("body")
+<p>
+  {{message}}
+</p>
+<form method="post" action="/sample">
+  <div>
+    <label for="msg">Name</label>
+    <input type="text" id="name" name="name">
+  </div>
+  <div>
+    <label for="msg">Email</label>
+    <input type="text" id="email" name="email">
+  </div>
+  <div>
+    <label for="msg">Age</label>
+    <input type="text" id="age" name="age">
+  </div>
+  <button type="submit">送信</button>
+</form>
+@end
