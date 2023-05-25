@@ -28,5 +28,5 @@ Route.get("/", async ({ view }) => {
   return view.render("welcome", data);
 });
 
-Route.get("/sample", "SamplesController.index");
+Route.get("/sample/:id/:pass", "SamplesController.index");
 Route.post("/sample", "SamplesController.index_posted");
