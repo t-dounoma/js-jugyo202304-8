@@ -5,17 +5,16 @@
 <p>{{ message }}</p>
 <form action="/sample" method="post">
   <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" name="name" id="name" class="form-control">
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="text" name="email" id="email" class="form-control">
-  </div>
-  <div class="mb-3">
-    <label for="age" class="form-label">Age</label>
-    <input type="text" name="age" id="age" class="form-control">
+    <label for="msg" class="form-label">Message</label>
+    <input type="text" name="msg" id="msg" class="form-control">
   </div>
   <button type="submit" class="btn btn-secondary">送信</button>
 </form>
+<hr>
+<h5>※セッションの内容</h5>
+<ul class="list-group">
+  @each(item in list)
+  <li class="list-group-item">{{ item }}</li>  
+  @endeach
+</ul>
 @end
