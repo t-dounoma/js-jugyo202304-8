@@ -30,3 +30,6 @@ Route.get("/", async ({ view }) => {
 
 Route.get("/sample/:id/:pass", "SamplesController.index");
 Route.post("/sample", "SamplesController.index_posted");
+Route.get("/person", "PeopleController.index");
+Route.get("/person/add", "PeopleController.add");
+Route.post("/person/add", "PeopleController.add_posted");
