@@ -6,17 +6,16 @@
 </p>
 <form method="post" action="/sample">
   <div>
-    <label for="msg">Name</label>
-    <input type="text" id="name" name="name">
-  </div>
-  <div>
-    <label for="msg">Email</label>
-    <input type="text" id="email" name="email">
-  </div>
-  <div>
-    <label for="msg">Age</label>
-    <input type="text" id="age" name="age">
+    <label for="msg">Message</label>
+    <input type="text" id="msg" name="msg">
   </div>
   <button type="submit">送信</button>
 </form>
+------------------------------
+<h5>セッションの内容</h5>
+<ul>
+@each(item in list)
+<li>{{item}}</li>
+@end
+</ul>
 @end

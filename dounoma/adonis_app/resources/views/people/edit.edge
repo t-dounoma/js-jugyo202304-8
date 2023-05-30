@@ -1,0 +1,23 @@
+@layout("layouts/main")
+@set("title",title)
+@section("body")
+<p>
+  {{message}}
+</p>
+<form method="post" action="/person/{{person.id}}">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{person.name}}">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" value="{{person.email}}">
+  </div>
+  <div>
+    <label for="age">Age<label>
+    <input type="text" id="age" name="age" value="{{person.age}}">
+  </div>
+  <button type="submit">送信</button>
+</form>
+
+@end

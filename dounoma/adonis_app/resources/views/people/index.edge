@@ -1,0 +1,12 @@
+@layout("layouts/main")
+@set("title",title)
+@section("body")
+<p>
+  {{message}}
+</p>
+<ul>
+@each(item in data)
+<li>{{JSON.stringify(item)}}</li>
+@end
+</ul>
+@end
