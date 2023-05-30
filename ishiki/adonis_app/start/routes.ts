@@ -33,3 +33,5 @@ Route.post("/sample", "SamplesController.index_posted");
 Route.get("/person", "PeopleController.index");
 Route.get("/person/add", "PeopleController.add");
 Route.post("/person/add", "PeopleController.add_posted");
+Route.get("/person/:id", "PeopleController.edit");
+Route.post("/person/:id", "PeopleController.edit_posted");

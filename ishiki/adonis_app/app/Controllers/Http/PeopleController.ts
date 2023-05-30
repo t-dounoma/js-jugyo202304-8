@@ -24,4 +24,22 @@ export default class PeopleController {
     await Person.create(ctx.request.body());
     return ctx.response.redirect("/person");
   }
+
+  public async edit(ctx: HttpContextContract) {
+    const id = ctx.request.param("id");
+    const person = await Person.find(id);
+    const data = {
+      title: "Edit",
+      message: "Person id=" + id + "の編集",
+      person: person,
+    };
+    return ctx.view.render("people/edit", data);
+  }
+
+  public async edit_posted(ctx: HttpContextContract) {
+    const id = ctx.request.param("id");
+    const person = await Person.find(id);
+    await person?.merge(ctx.request.body()).save();
+    return ctx.response.redirect("/person");
+  }
 }
