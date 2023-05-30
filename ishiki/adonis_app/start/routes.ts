@@ -35,3 +35,5 @@ Route.get("/person/add", "PeopleController.add");
 Route.post("/person/add", "PeopleController.add_posted");
 Route.get("/person/:id", "PeopleController.edit");
 Route.post("/person/:id", "PeopleController.edit_posted");
+Route.get("/person/del/:id", "PeopleController.delete");
+Route.post("/person/del/:id", "PeopleController.delete_posted");

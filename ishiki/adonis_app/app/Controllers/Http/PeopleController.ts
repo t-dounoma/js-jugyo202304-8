@@ -42,4 +42,22 @@ export default class PeopleController {
     await person?.merge(ctx.request.body()).save();
     return ctx.response.redirect("/person");
   }
+
+  public async delete(ctx: HttpContextContract) {
+    const id = ctx.request.param("id");
+    const person = await Person.find(id);
+    const data = {
+      title: "Delete",
+      message: "Person id=" + id + "の削除",
+      person: person,
+    };
+    return ctx.view.render("people/delete", data);
+  }
+
+  public async delete_posted(ctx: HttpContextContract) {
+    const id = ctx.request.param("id");
+    const person = await Person.find(id);
+    await person?.delete();
+    return ctx.response.redirect("/person");
+  }
 }

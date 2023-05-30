@@ -1,0 +1,10 @@
+@layout('layouts/main')
+@set('title', title)
+
+@section('body')
+<p>{{message}}</p>
+<form action="/person/del/{{ person.id }}" method="post">
+  <pre>{{JSON.stringify(person,null,'    ')}}</pre>
+  <button type="submit" class="btn btn-secondary">送信</button>
+</form>
+@end
