@@ -3,10 +3,14 @@ import Person from "App/Models/Person";
 
 export default class PeopleController {
   public async index(ctx: HttpContextContract) {
-    const people = await Person.all();
+    const qs = ctx.request.qs();
+    var p = parseInt(qs.page ? qs.page : 1);
+    p = p < 1 ? 1 : p;
+    const people = await Person.query().paginate(p, 5);
     const data = {
       title: "Sample",
       message: "Lucid",
+      page: p,
       data: people,
     };
     return ctx.view.render("people/index", data);
