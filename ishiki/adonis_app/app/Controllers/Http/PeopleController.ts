@@ -66,10 +66,13 @@ export default class PeopleController {
     var people: Person[];
     if (ctx.request.method() == "POST") {
       find = ctx.request.input("find");
-      people = await Person.query().where("name", "=", find).exec();
+      people = await Person.query()
+        .where("name", "like", "%" + find + "%")
+        .orderBy("name", "asc")
+        .exec();
     } else {
       find = "";
-      people = await Person.all();
+      people = await Person.query().orderBy("age", "desc").exec();
     }
     const data = {
       title: "Find",
