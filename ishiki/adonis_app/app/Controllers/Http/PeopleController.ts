@@ -60,4 +60,23 @@ export default class PeopleController {
     await person?.delete();
     return ctx.response.redirect("/person");
   }
+
+  public async find(ctx: HttpContextContract) {
+    var find: string;
+    var people: Person[];
+    if (ctx.request.method() == "POST") {
+      find = ctx.request.input("find");
+      people = await Person.query().where("name", "=", find).exec();
+    } else {
+      find = "";
+      people = await Person.all();
+    }
+    const data = {
+      title: "Find",
+      message: "",
+      find: find,
+      data: people,
+    };
+    return ctx.view.render("people/find", data);
+  }
 }
