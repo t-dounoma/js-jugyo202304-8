@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import FormData from './formdata';
 
 @Controller()
 export class AppController {
@@ -9,5 +10,11 @@ export class AppController {
   getHello(@Param() params): object {
     const id = params.id ?? 0;
     return this.appService.getHello(id);
+  }
+
+  @Post('/hello/post')
+  post(@Body() frm: FormData): string {
+    this.appService.addData(frm);
+    return 'form data was pushed!';
   }
 }
