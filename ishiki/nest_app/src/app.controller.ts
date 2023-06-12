@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import FormData from './formdata';
 
@@ -16,5 +16,14 @@ export class AppController {
   post(@Body() frm: FormData): string {
     this.appService.addData(frm);
     return 'form data was pushed!';
+  }
+
+  @Get()
+  @Render('index')
+  index() {
+    return {
+      title: 'NestJS-MVC',
+      message: 'NestJS + hbs = MVC application!',
+    };
   }
 }
