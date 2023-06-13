@@ -20,5 +20,19 @@
       <button type="submit" class="btn btn-secondary">送信</button>
     </form>
     {{>footer}}
+    <table class="table">
+      <thead>
+        <tr><th>Message</th><th>Name</th><th>posted</th></tr>
+      </thead>
+      <tbody>
+        {{#each data}}
+        <tr>
+          <td>{{msg}}</td>
+          <td>{{name}}</td>
+          <td>{{posted}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </body>
 </html>
