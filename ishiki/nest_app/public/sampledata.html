@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NestJS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body class="container mt-2" onLoad="getData()">
+    <h1 class="display-6 text-primary">
+      <strong>NestJS+TypeORM</strong>
+    </h1>
+    <div class="my-3" id="result">
+      <p id="msg">※データを送信します。</p>
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Memo</label>
+      <textarea name="memo" id="memo" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="mail" class="form-label">Mail</label>
+      <textarea name="mail" id="mail" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="url" class="form-label">Url</label>
+      <textarea name="url" id="url" class="form-control"></textarea>
+    </div>
+    <div class="btn btn-secondary" onclick="doAction()">送信</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Memo</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="my-3">&nbsp;</div>
+    <div style="width: 100%" class="fixed-bottom bg-secondary p-1">
+      <p class="text-center text-white m-0">&copy;MASATO-ISHIKI</p>
+    </div>
+    <script>
+      function getData() {
+        fetch('/sampledata')
+          .then((response) => response.json())
+          .then((data) => makeTable(data));
+      }
+
+      function makeTable(data) {
+        var result = '';
+        for (var item of data) {
+          result += `<tr><td>${item.memo}</td><td>${item.created}</td></tr>`;
+        }
+        document.querySelector('#tbody').innerHTML = result;
+      }
+
+      function doAction() {
+        const memo = document.querySelector('#memo').value;
+        const mail = document.querySelector('#mail').value;
+        const url = document.querySelector('#url').value;
+        const data = { memo: memo, mail: mail, url: url };
+        const opt = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        };
+        fetch('/sampledata/add', opt)
+          .then((response) => response.text())
+          .then((data) => setData(data));
+      }
+
+      function setData(res) {
+        document.querySelector('#msg').textContent = '結果:' + res;
+        document.querySelector('#memo').value = '';
+        document.querySelector('#mail').value = '';
+        document.querySelector('#url').value = '';
+        getData();
+      }
+    </script>
+  </body>
+</html>
