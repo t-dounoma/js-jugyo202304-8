@@ -26,4 +26,9 @@ export class SampledataController {
   async edit(@Body() data: Sampledata): Promise<Sampledata> {
     return this.sampledataService.update(data);
   }
+
+  @Post('/delete')
+  async delete(@Body() data: any): Promise<DeleteResult> {
+    return this.sampledataService.delete(data);
+  }
 }

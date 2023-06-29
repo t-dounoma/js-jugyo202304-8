@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InsertResult, Repository } from 'typeorm';
+import { DeleteResult, InsertResult, Repository } from 'typeorm';
 import { Sampledata } from 'src/sampledata.entity';
 
 @Injectable()
@@ -19,9 +19,7 @@ export class SampledataService {
   }
 
   async getById(id: number): Promise<Sampledata> {
-    return await this.sampledataRepository.findOne({
-      where: { id: id },
-    });
+    return await this.sampledataRepository.findOneBy({ id: id });
   }
 
   async update(data: Sampledata): Promise<Sampledata> {
@@ -30,5 +28,9 @@ export class SampledataService {
     entity.mail = data.mail;
     entity.url = data.url;
     return await this.sampledataRepository.save(entity);
+  }
+
+  async delete(data: any): Promise<DeleteResult> {
+    return await this.sampledataRepository.delete(data.id);
   }
 }
