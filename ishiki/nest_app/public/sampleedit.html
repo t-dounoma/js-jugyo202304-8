@@ -12,8 +12,19 @@
       <strong>NestJS+TypeORM</strong>
     </h1>
     <div class="my-3" id="result">
-      <p id="msg">※データを送信します。</p>
+      <p id="msg">※データを更新します。</p>
     </div>
+    <div class="mb-3">
+      <label for="id" class="form-label">ID</label>
+      <input
+        type="number"
+        name="id"
+        id="id"
+        class="form-control"
+        onchange="doChange()"
+      />
+    </div>
+    <hr />
     <div class="mb-3">
       <label for="name" class="form-label">Memo</label>
       <textarea name="memo" id="memo" class="form-control"></textarea>
@@ -26,40 +37,50 @@
       <label for="url" class="form-label">Url</label>
       <input type="url" name="url" id="url" class="form-control" />
     </div>
-    <div class="btn btn-secondary" onclick="doAction()">送信</div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Memo</th>
-          <th>Created</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
+    <div class="btn btn-secondary" id="sendbtn" onclick="doAction()" disapled>
+      送信
+    </div>
     <div class="my-3">&nbsp;</div>
     <div style="width: 100%" class="fixed-bottom bg-secondary p-1">
       <p class="text-center text-white m-0">&copy;MASATO-ISHIKI</p>
     </div>
     <script>
-      function getData() {
-        fetch('/sampledata')
+      function doChange() {
+        const id = document.querySelector('#id').value;
+        const opt = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id: +id }),
+        };
+        fetch('/sampledata/id', opt)
           .then((response) => response.json())
-          .then((data) => makeTable(data));
+          .then((data) => showData(data))
+          .catch((error) => clearData());
       }
 
-      function makeTable(data) {
-        var result = '';
-        for (var item of data) {
-          result += `<tr><td>${item.memo}</td><td>${item.created}</td></tr>`;
-        }
-        document.querySelector('#tbody').innerHTML = result;
+      function showData(data) {
+        document.querySelector('#msg').textContent = 'id=' + id + 'のデータ。';
+        document.querySelector('#memo').value = data.memo;
+        document.querySelector('#mail').value = data.mail;
+        document.querySelector('#url').value = data.url;
+        document.querySelector('#sendbtn').disabled = false;
+      }
+      function clearData() {
+        document.querySelector('#msg').textContent = '※データを更新します。';
+        document.querySelector('#memo').value = '';
+        document.querySelector('#mail').value = '';
+        document.querySelector('#url').value = '';
+        document.querySelector('#sendbtn').disabled = true;
       }
 
       function doAction() {
+        const id = document.querySelector('#id').value;
         const memo = document.querySelector('#memo').value;
         const mail = document.querySelector('#mail').value;
         const url = document.querySelector('#url').value;
-        const data = { memo: memo, mail: mail, url: url };
+        const data = { id: id, memo: memo, mail: mail, url: url };
         const opt = {
           method: 'POST',
           headers: {
@@ -67,17 +88,13 @@
           },
           body: JSON.stringify(data),
         };
-        fetch('/sampledata/add', opt)
+        fetch('/sampledata/edit', opt)
           .then((response) => response.text())
           .then((data) => setData(data));
       }
 
       function setData(res) {
         document.querySelector('#msg').textContent = '結果:' + res;
-        document.querySelector('#memo').value = '';
-        document.querySelector('#mail').value = '';
-        document.querySelector('#url').value = '';
-        getData();
       }
     </script>
   </body>

@@ -16,4 +16,14 @@ export class SampledataController {
   async add(@Body() data: Sampledata): Promise<InsertResult> {
     return this.sampledataService.addSampledata(data);
   }
+
+  @Post('/id')
+  async byId(@Body() data: any): Promise<Sampledata> {
+    return this.sampledataService.getById(data.id);
+  }
+
+  @Post('/edit')
+  async edit(@Body() data: Sampledata): Promise<Sampledata> {
+    return this.sampledataService.update(data);
+  }
 }

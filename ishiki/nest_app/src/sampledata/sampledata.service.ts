@@ -14,7 +14,21 @@ export class SampledataService {
     return await this.sampledataRepository.find();
   }
 
-  async addSampledata(obj): Promise<InsertResult> {
+  async addSampledata(obj: object): Promise<InsertResult> {
     return this.sampledataRepository.insert(obj);
+  }
+
+  async getById(id: number): Promise<Sampledata> {
+    return await this.sampledataRepository.findOne({
+      where: { id: id },
+    });
+  }
+
+  async update(data: Sampledata): Promise<Sampledata> {
+    const entity = await this.getById(data.id);
+    entity.memo = data.memo;
+    entity.mail = data.mail;
+    entity.url = data.url;
+    return await this.sampledataRepository.save(entity);
   }
 }
