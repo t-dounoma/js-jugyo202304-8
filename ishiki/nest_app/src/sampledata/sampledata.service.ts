@@ -33,4 +33,8 @@ export class SampledataService {
   async delete(data: any): Promise<DeleteResult> {
     return await this.sampledataRepository.delete(data.id);
   }
+
+  async find(data: any): Promise<Sampledata[]> {
+    return await this.sampledataRepository.findBy({ mail: data.find });
+  }
 }

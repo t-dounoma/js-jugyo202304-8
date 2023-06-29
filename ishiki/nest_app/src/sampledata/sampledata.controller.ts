@@ -31,4 +31,9 @@ export class SampledataController {
   async delete(@Body() data: any): Promise<DeleteResult> {
     return this.sampledataService.delete(data);
   }
+
+  @Post('/find')
+  async find(@Body() data: any): Promise<Sampledata[]> {
+    return this.sampledataService.find(data);
+  }
 }
