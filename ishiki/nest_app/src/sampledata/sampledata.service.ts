@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, InsertResult, Repository } from 'typeorm';
+import { DeleteResult, InsertResult, Repository, Like } from 'typeorm';
 import { Sampledata } from 'src/sampledata.entity';
 
 @Injectable()
@@ -11,7 +11,9 @@ export class SampledataService {
   ) {}
 
   async getAll(): Promise<Sampledata[]> {
-    return await this.sampledataRepository.find();
+    return await this.sampledataRepository.find({
+      order: { created: 'DESC' },
+    });
   }
 
   async addSampledata(obj: object): Promise<InsertResult> {
@@ -35,6 +37,8 @@ export class SampledataService {
   }
 
   async find(data: any): Promise<Sampledata[]> {
-    return await this.sampledataRepository.findBy({ mail: data.find });
+    return await this.sampledataRepository.findBy({
+      mail: Like(`%${data.find}%`),
+    });
   }
 }
